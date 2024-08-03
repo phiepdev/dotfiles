@@ -27,6 +27,7 @@ mkdir -p $HOME/.config
 install_pkg xorg
 
 # font
+install_pkg ttf-dejavu
 install_pkg ttf-jetbrains-mono
 install_pkg ttf-jetbrains-mono-nerd
 install_pkg noto-fonts-cjk
@@ -180,7 +181,7 @@ EOF
 sudo systemctl enable slock@$USER.service
 
 # vim
-install_pkg gvim
+install_pkg vim
 cp_config $PWD/vim/vimrc $HOME/.vimrc
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
