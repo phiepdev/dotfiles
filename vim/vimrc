@@ -92,7 +92,6 @@ call plug#begin()
   Plug 'preservim/nerdtree'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
-  Plug 'vim-airline/vim-airline'
   Plug 'easymotion/vim-easymotion'
   Plug 'airblade/vim-gitgutter'
   Plug 'sheerun/vim-polyglot'
@@ -103,7 +102,6 @@ call plug#begin()
   Plug 'junegunn/limelight.vim'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'ntpeters/vim-better-whitespace'
-  Plug 'voldikss/vim-floaterm'
 call plug#end()
 
 " Gruvbox
@@ -152,10 +150,10 @@ inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+  let col = col(".") - 1
+  return !col || getline(".")[col - 1]  =~# "\s"
 endfunction
-inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <c-@> coc#refresh()
 " Next/previous diagnostics
 nmap ]d <Plug>(coc-diagnostic-next)
 nmap [d <Plug>(coc-diagnostic-prev)
@@ -165,7 +163,7 @@ nmap gt <Plug>(coc-type-definition)
 nmap gi <Plug>(coc-implementation)
 nmap gr <Plug>(coc-references)
 " Show documentation
-nmap <leader>h <CMD>call CocActionAsync('doHover')<CR>
+nmap <leader>h <CMD>call CocActionAsync("doHover")<CR>
 " Rename
 nmap <leader>rn <Plug>(coc-rename)
 " Code action
@@ -180,9 +178,3 @@ nmap <leader>dO <Plug>VimspectorStepOver
 nmap <leader>di <Plug>VimspectorStepInto
 nmap <leader>do <Plug>VimspectorStepOut
 nmap <leader>de <Plug>VimspectorBalloonEval
-
-" Floaterm
-let g:floaterm_title = ""
-let g:floaterm_position = "topright"
-nmap <C-\> <CMD>FloatermToggle<CR>
-tmap <C-\> <C-\><C-n><CMD>FloatermToggle<CR>
